@@ -1,21 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcn8olr3i7yxk"]
+[gd_scene load_steps=4 format=3 uid="uid://bcn8olr3i7yxk"]
 
 [ext_resource type="Script" path="res://Sun.cs" id="1_7w1s1"]
 [ext_resource type="PackedScene" uid="uid://cxsprxj7jetft" path="res://planet.tscn" id="2_xq7wp"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dtvh1"]
-vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
-albedo_color = Color(0.945098, 1, 0, 1)
-
 [sub_resource type="SphereMesh" id="SphereMesh_mq4hc"]
-material = SubResource("StandardMaterial3D_dtvh1")
+lightmap_size_hint = Vector2i(33, 17)
 radius = 1.0
 height = 2.0
 
-[node name="Sun" type="Node2D"]
+[node name="Sun" type="Node2D" node_paths=PackedStringArray("SunMesh")]
 script = ExtResource("1_7w1s1")
 planetScene = ExtResource("2_xq7wp")
+SunMesh = NodePath("MeshInstance2D")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 scale = Vector2(50, 50)

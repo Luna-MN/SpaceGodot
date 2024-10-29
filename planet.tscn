@@ -5,11 +5,11 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_pmffs"]
 
-[node name="Planet" type="Node2D" node_paths=PackedStringArray("line")]
+[node name="Planet" type="Node2D" node_paths=PackedStringArray("line", "mesh")]
 script = ExtResource("1_776i0")
-Radius = 170
 offset = 33.97
 line = NodePath("Line2D")
+mesh = NodePath("MeshInstance2D")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 scale = Vector2(19.985, 19.985)

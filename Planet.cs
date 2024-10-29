@@ -4,12 +4,14 @@ using System;
 public partial class Planet : Node2D
 {
 	[Export]
-	public int Radius = 100;
+	public float Radius = 100;
 	public int Length = 50;
 	[Export]
 	public float offset = 0;
 	[Export]
 	public Line2D line;
+	[Export]
+	public MeshInstance2D mesh;
 	public float angle;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

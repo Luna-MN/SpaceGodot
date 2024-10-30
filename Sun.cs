@@ -13,7 +13,7 @@ public partial class Sun : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		SunMesh.Modulate = new Color(1, 1, 0);
+		SunMesh.Modulate = new Color(1, 1, 0.4f);
 		for (int i = 0; i < 8; i++)
 		{
 			Planet planet = planetScene.Instantiate<Planet>();
@@ -21,9 +21,12 @@ public partial class Sun : Node2D
 			planet.Radius = RNG.RandfRange(100, 1000);
 			if (planet.Radius > 332.5 && planet.Radius < 697.5)
 			{
-				planet.mesh.Modulate = new Color(0, 1, 0);
+				planet.mesh.Modulate = new Color(0.6f, 1, 0.6f);
 			}
-
+			else
+			{
+				planet.mesh.Modulate = new Color(1f, 0.6f, 0.6f);
+			}
 			planet.Length = 50;
 			planet.offset = RNG.RandfRange(0, 2 * Mathf.Pi);
 			planet.Name = "Planet" + i;

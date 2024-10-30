@@ -22,6 +22,7 @@ public partial class Sun : Node2D
 			if (planet.Radius > 332.5 && planet.Radius < 697.5)
 			{
 				planet.mesh.Modulate = new Color(0.6f, 1, 0.6f);
+				planet.habitable = true;
 			}
 			else
 			{

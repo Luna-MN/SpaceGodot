@@ -13,6 +13,7 @@ public partial class Planet : Node2D
 	[Export]
 	public MeshInstance2D mesh;
 	public float angle;
+	public bool habitable = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

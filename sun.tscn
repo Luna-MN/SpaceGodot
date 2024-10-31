@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcn8olr3i7yxk"]
+[gd_scene load_steps=5 format=3 uid="uid://bcn8olr3i7yxk"]
 
 [ext_resource type="Script" path="res://Sun.cs" id="1_7w1s1"]
 [ext_resource type="PackedScene" uid="uid://cxsprxj7jetft" path="res://planet.tscn" id="2_xq7wp"]
+[ext_resource type="PackedScene" uid="uid://bqqqyn1klejs5" path="res://PlanetComponent.tscn" id="3_7fyj2"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_mq4hc"]
 lightmap_size_hint = Vector2i(33, 17)
@@ -16,3 +17,5 @@ SunMesh = NodePath("MeshInstance2D")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 scale = Vector2(50, 50)
 mesh = SubResource("SphereMesh_mq4hc")
+
+[node name="Node2D" parent="." instance=ExtResource("3_7fyj2")]

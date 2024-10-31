@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqqqyn1klejs5"]
+
+[ext_resource type="Script" path="res://PlanetComponent.cs" id="1_ts1vf"]
+[ext_resource type="PackedScene" uid="uid://cxsprxj7jetft" path="res://planet.tscn" id="2_dxle2"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ts1vf")
+planetScene = ExtResource("2_dxle2")

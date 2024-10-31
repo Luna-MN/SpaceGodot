@@ -14,7 +14,7 @@ public partial class PlanetComponent : Node2D
 	public override void _Ready()
 	{
 
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < RNG.RandiRange(3, 8); i++)
 		{
 			Planet planet = planetScene.Instantiate<Planet>();
 			//planet.Radius = 100 + i * 50;

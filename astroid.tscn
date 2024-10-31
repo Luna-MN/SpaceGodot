@@ -4,8 +4,9 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_d1183"]
 
-[node name="Astroid" type="Node2D"]
+[node name="Astroid" type="Node2D" node_paths=PackedStringArray("mesh")]
 script = ExtResource("1_7ayn2")
+mesh = NodePath("MeshInstance2D")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 position = Vector2(-4.76837e-07, -9.53674e-07)

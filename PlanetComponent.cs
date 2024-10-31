@@ -7,6 +7,7 @@ public partial class PlanetComponent : Node2D
 	public RandomNumberGenerator RNG = new RandomNumberGenerator();
 	[Export]
 	public PackedScene planetScene;
+	public bool radiusPicked = false;
 	public List<Planet> planets = new List<Planet>();
 
 	// Called when the node enters the scene tree for the first time.
@@ -33,6 +34,18 @@ public partial class PlanetComponent : Node2D
 			planet.line.DefaultColor = new Color(RNG.RandfRange(0, 1), RNG.RandfRange(0, 1), RNG.RandfRange(0, 1));
 			AddChild(planet);
 			planets.Add(planet);
+			while (!radiusPicked)
+			{
+				foreach (Planet p in planets)
+				{
+					if (planet.Radius < p.Radius && planet.Radius > p.Radius - 50 || planet.Radius > p.Radius && planet.Radius < p.Radius + 50)
+					{
+						planet.Radius = RNG.RandfRange(100, 1000);
+						break;
+					}
+					radiusPicked = true;
+				}
+			}
 		}
 	}
 

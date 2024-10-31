@@ -18,8 +18,9 @@ public partial class AstroidBelt : Node2D
 			astroid.Radius = RNG.RandfRange(10, 100) + overallRaduis;
 			astroid.offset = RNG.RandfRange(0, 2 * Mathf.Pi);
 			astroid.Name = "Astroid" + i;
-			AddChild(astroid);
+			astroid.type = (Astroid.AstroidType)RNG.RandiRange(0, 2);
 			astroids.Add(astroid);
+			AddChild(astroid);
 		}
 	}
 

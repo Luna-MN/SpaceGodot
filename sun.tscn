@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcn8olr3i7yxk"]
+[gd_scene load_steps=6 format=3 uid="uid://bcn8olr3i7yxk"]
 
 [ext_resource type="Script" path="res://Sun.cs" id="1_7w1s1"]
 [ext_resource type="PackedScene" uid="uid://cxsprxj7jetft" path="res://planet.tscn" id="2_xq7wp"]
 [ext_resource type="PackedScene" uid="uid://bqqqyn1klejs5" path="res://PlanetComponent.tscn" id="3_7fyj2"]
+[ext_resource type="PackedScene" uid="uid://c8j56eyn3o2jy" path="res://AstroidBelt.tscn" id="4_l8lnh"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_mq4hc"]
 lightmap_size_hint = Vector2i(33, 17)
@@ -18,4 +19,7 @@ SunMesh = NodePath("MeshInstance2D")
 scale = Vector2(50, 50)
 mesh = SubResource("SphereMesh_mq4hc")
 
-[node name="Node2D" parent="." instance=ExtResource("3_7fyj2")]
+[node name="PlanetComponent" parent="." instance=ExtResource("3_7fyj2")]
+
+[node name="Astoridbelt" parent="." instance=ExtResource("4_l8lnh")]
+position = Vector2(51.58, 11.699)

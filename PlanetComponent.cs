@@ -19,7 +19,7 @@ public partial class PlanetComponent : Node2D
 			Planet planet = planetScene.Instantiate<Planet>();
 			//planet.Radius = 100 + i * 50;
 			planet.Radius = RNG.RandfRange(100, 1000);
-			planet.speed = RNG.RandfRange(0.1f, 2);
+			planet.speed = RNG.RandfRange(0.3f, 2);
 			if (planet.Radius > 332.5 && planet.Radius < 697.5)
 			{
 				planet.mesh.Modulate = new Color(0.6f, 1, 0.6f);

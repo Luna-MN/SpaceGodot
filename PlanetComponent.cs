@@ -33,13 +33,13 @@ public partial class PlanetComponent : Node2D
 			planet.offset = RNG.RandfRange(0, 2 * Mathf.Pi);
 			planet.Name = "Planet" + i;
 			planet.line.DefaultColor = new Color(RNG.RandfRange(0, 1), RNG.RandfRange(0, 1), RNG.RandfRange(0, 1));
-			AddChild(planet);
+
 			planets.Add(planet);
 			while (!radiusPicked)
 			{
 				foreach (Planet p in planets)
 				{
-					if (planet.Radius < p.Radius && planet.Radius > p.Radius - 50 || planet.Radius > p.Radius && planet.Radius < p.Radius + 50)
+					if ((planet.Radius < p.Radius && planet.Radius > p.Radius - 80) || (planet.Radius > p.Radius && planet.Radius < p.Radius + 80))
 					{
 						planet.Radius = RNG.RandfRange(100, 1000);
 						break;
@@ -47,6 +47,7 @@ public partial class PlanetComponent : Node2D
 					radiusPicked = true;
 				}
 			}
+			AddChild(planet);
 		}
 	}
 

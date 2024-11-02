@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7kquat7a60mk"]
+[gd_scene load_steps=6 format=3 uid="uid://b7kquat7a60mk"]
 
 [ext_resource type="Script" path="res://Scripts/Sun.cs" id="1_8p6sp"]
 [ext_resource type="PackedScene" uid="uid://c8j56eyn3o2jy" path="res://Scenes/Components/AstroidBelt.tscn" id="3_byh7w"]
 [ext_resource type="PackedScene" uid="uid://bqqqyn1klejs5" path="res://Scenes/Components/PlanetComponent.tscn" id="3_ptxpx"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_oxqj0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ay53"]
+radius = 1300.0
 
 [node name="Sun" type="Node2D"]
 script = ExtResource("1_8p6sp")
@@ -16,3 +19,8 @@ mesh = SubResource("SphereMesh_oxqj0")
 [node name="Node2D" parent="." instance=ExtResource("3_ptxpx")]
 
 [node name="Astoridbelt" parent="." instance=ExtResource("3_byh7w")]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_0ay53")

@@ -4,22 +4,14 @@ using System;
 public partial class Character : CharacterBody2D
 {
 	public const float Speed = 300.0f;
-	public const float JumpVelocity = -400.0f;
-
-	// Get the gravity from the project settings to be synced with RigidBody nodes.
-	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-
+	public Vector2 TargetPos;
+	public bool clicked = false;
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if (direction != Vector2.Zero)
-		{
-
-		}
 		if (Input.IsKeyPressed(Key.W))
 		{
 			velocity.Y = -1 * Speed;
@@ -47,5 +39,33 @@ public partial class Character : CharacterBody2D
 
 		Velocity = velocity;
 		MoveAndSlide();
+		if (clicked)
+		{
+			Vector2 direction = (TargetPos - Position).Normalized();
+			velocity = direction * Speed;
+			Velocity = velocity;
+			MoveAndSlide();
+			if (Position.DistanceTo(TargetPos) < 10)
+			{
+				clicked = false;
+			}
+
+		}
+	}
+	public override void _Input(InputEvent @event)
+	{
+		if (@event is InputEventKey eventKey)
+		{
+
+		}
+		if (@event is InputEventMouseButton eventMouseButton && eventMouseButton.Pressed)
+		{
+			if (Input.IsMouseButtonPressed(MouseButton.Left))
+			{
+				TargetPos = GetGlobalMousePosition();
+				clicked = true;
+
+			}
+		}
 	}
 }

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b7kquat7a60mk" path="res://Scenes/sun.tscn" id="1_abps3"]
 [ext_resource type="Script" path="res://Scripts/Character.cs" id="1_ctsor"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kcouw"]
+[sub_resource type="PrismMesh" id="PrismMesh_ydu0v"]
 
 [node name="Main" type="Node2D"]
 
@@ -11,12 +11,14 @@
 script = ExtResource("1_ctsor")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CapsuleShape2D_kcouw")
+scale = Vector2(28.75, 29.875)
+mesh = SubResource("PrismMesh_ydu0v")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(0.55, 0.55)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
+polygon = PackedVector2Array(0, 14.795, 14.345, -14.97, -14.385, -14.955)
 
 [node name="Sun" parent="." instance=ExtResource("1_abps3")]
 position = Vector2(1151, 646)

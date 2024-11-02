@@ -10,6 +10,7 @@ public partial class Sun : Node2D
 	public MeshInstance2D SunMesh;
 	public List<Planet> planets = new List<Planet>();
 	public RandomNumberGenerator RNG = new RandomNumberGenerator();
+	public Character player;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -19,5 +20,19 @@ public partial class Sun : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+	}
+	private void PlayerEnteredArea(Node body)
+	{
+		if (body is Character)
+		{
+			player = (Character)body;
+		}
+	}
+	private void PlayerExitedArea(Node body)
+	{
+		if (body is Character)
+		{
+			player = null;
+		}
 	}
 }

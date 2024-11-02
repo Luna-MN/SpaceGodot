@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7kquat7a60mk"]
+
+[ext_resource type="Script" path="res://Scripts/Sun.cs" id="1_8p6sp"]
+[ext_resource type="PackedScene" uid="uid://c8j56eyn3o2jy" path="res://Scenes/Components/AstroidBelt.tscn" id="3_byh7w"]
+[ext_resource type="PackedScene" uid="uid://bqqqyn1klejs5" path="res://Scenes/Components/PlanetComponent.tscn" id="3_ptxpx"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_oxqj0"]
+
+[node name="Sun" type="Node2D"]
+script = ExtResource("1_8p6sp")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(61.633, 59.663)
+mesh = SubResource("SphereMesh_oxqj0")
+
+[node name="Node2D" parent="." instance=ExtResource("3_ptxpx")]
+
+[node name="Astoridbelt" parent="." instance=ExtResource("3_byh7w")]

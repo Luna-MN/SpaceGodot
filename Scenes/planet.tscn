@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2qv1r7u8cuht"]
+
+[ext_resource type="Script" path="res://Scripts/Planet.cs" id="1_8uboy"]
+[ext_resource type="PackedScene" uid="uid://dydjwekn0kh1w" path="res://Scenes/line_2d.tscn" id="2_y2m7m"]
+[ext_resource type="PackedScene" uid="uid://b266p5m8t5i3d" path="res://Scenes/Components/moon_component.tscn" id="3_6egwu"]
+[ext_resource type="PackedScene" uid="uid://c2yr3pl886x0h" path="res://Scenes/Moon.tscn" id="4_58fev"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_68f1a"]
+
+[node name="Planet" type="Node2D" node_paths=PackedStringArray("line", "mesh")]
+script = ExtResource("1_8uboy")
+line = NodePath("Line2D")
+mesh = NodePath("MeshInstance2D")
+
+[node name="Line2D" parent="." instance=ExtResource("2_y2m7m")]
+width = 20.0
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(20.5227, 19.5)
+mesh = SubResource("SphereMesh_68f1a")
+
+[node name="MoonComponent" parent="." instance=ExtResource("3_6egwu")]
+moonScene = ExtResource("4_58fev")

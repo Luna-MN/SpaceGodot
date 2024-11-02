@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dafalxxm8mbm3"]
+
+[ext_resource type="PackedScene" uid="uid://b7kquat7a60mk" path="res://Scenes/sun.tscn" id="1_abps3"]
+[ext_resource type="Script" path="res://Scripts/Character.cs" id="1_ctsor"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kcouw"]
+
+[node name="Main" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_ctsor")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_kcouw")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(0.55, 0.55)
+
+[node name="Sun" parent="." instance=ExtResource("1_abps3")]
+position = Vector2(1151, 646)

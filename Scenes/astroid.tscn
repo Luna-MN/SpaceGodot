@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhml2i5munq08"]
 
-[ext_resource type="Script" path="res://Astroid.cs" id="1_7ayn2"]
+[ext_resource type="Script" path="res://Scripts/Astroid.cs" id="1_mntss"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_d1183"]
 
 [node name="Astroid" type="Node2D" node_paths=PackedStringArray("mesh")]
-script = ExtResource("1_7ayn2")
+script = ExtResource("1_mntss")
 mesh = NodePath("MeshInstance2D")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]

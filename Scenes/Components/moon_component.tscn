@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b266p5m8t5i3d"]
+
+[ext_resource type="Script" path="res://Scenes/Components/MoonComponent.cs" id="1_igime"]
+
+[node name="MoonComponent" type="Node2D"]
+script = ExtResource("1_igime")

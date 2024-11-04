@@ -26,6 +26,7 @@ public partial class Sun : Node2D
 		if (body is Character)
 		{
 			player = (Character)body;
+			player.sun = this;
 		}
 	}
 	private void PlayerExitedArea(Node body)
@@ -33,6 +34,7 @@ public partial class Sun : Node2D
 		if (body is Character)
 		{
 			player = null;
+			player.sun = null;
 		}
 	}
 }

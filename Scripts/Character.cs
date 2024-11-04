@@ -1,11 +1,14 @@
 using Godot;
 using System;
+using System.Runtime.InteropServices;
 
 public partial class Character : CharacterBody2D
 {
 	public const float Speed = 300.0f;
 	public Vector2 TargetPos;
 	public bool clicked = false;
+	public Sun sun;
+	public float angle = 0;
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
@@ -39,6 +42,11 @@ public partial class Character : CharacterBody2D
 
 		Velocity = velocity;
 		MoveAndSlide();
+		if (sun != null)
+		{
+			angle += (float)delta;
+			//Position = ((Godot.Node2D)GetParent()).GlobalPosition + new Vector2(Mathf.Cos(angle + offset) * Radius, Mathf.Sin(angle + offset) * Radius);
+		}
 		if (clicked)
 		{
 			Vector2 direction = (TargetPos - Position).Normalized();
@@ -51,6 +59,7 @@ public partial class Character : CharacterBody2D
 			}
 
 		}
+
 	}
 	public override void _Input(InputEvent @event)
 	{
@@ -64,6 +73,14 @@ public partial class Character : CharacterBody2D
 			{
 				TargetPos = GetGlobalMousePosition();
 				clicked = true;
+
+			}
+			if (Input.IsMouseButtonPressed(MouseButton.WheelUp))
+			{
+
+			}
+			if (Input.IsMouseButtonPressed(MouseButton.WheelDown))
+			{
 
 			}
 		}

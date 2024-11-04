@@ -4,11 +4,18 @@ using System.Runtime.InteropServices;
 
 public partial class Character : CharacterBody2D
 {
-	public const float Speed = 300.0f;
+	public const float baseSpeed = 300.0f;
+	private float Speed;
 	public Vector2 TargetPos;
 	public bool clicked = false;
 	public Sun sun;
 	public float angle = 0;
+	[Export]
+	public Camera2D camera;
+	public override void _Ready()
+	{
+		Speed = baseSpeed;
+	}
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
@@ -75,14 +82,29 @@ public partial class Character : CharacterBody2D
 				clicked = true;
 
 			}
-			if (Input.IsMouseButtonPressed(MouseButton.WheelUp))
+			if (eventMouseButton.ButtonIndex == MouseButton.WheelUp)
 			{
-
+				ZoomCamera(1.1f); // Zoom in
 			}
-			if (Input.IsMouseButtonPressed(MouseButton.WheelDown))
+			else if (eventMouseButton.ButtonIndex == MouseButton.WheelDown)
 			{
-
+				ZoomCamera(0.9f); // Zoom out
 			}
+		}
+	}
+
+	private void ZoomCamera(float zoomFactor)
+	{
+		Camera2D camera = GetNode<Camera2D>("Camera2D");
+		if (camera != null)
+		{
+			// Adjust the camera's zoom
+			camera.Zoom *= zoomFactor;
+
+			// Adjust the player's scale inversely to the camera's zoom
+			Scale /= zoomFactor;
+			// Adjust the player's speed inversely to the zoom factor
+			Speed = baseSpeed * Scale.X;
 		}
 	}
 }

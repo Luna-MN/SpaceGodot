@@ -15,7 +15,10 @@ public partial class Planet : Node2D
 	public float angle;
 	public bool habitable = false;
 	public float speed = 1;
-	// Called when the node enters the scene tree for the first time.
+	public bool PlayerEntered = false;
+	public CharacterBody2D player;
+	private Vector2 playerOffset; // Offset of the player from the planet's center
+								  // Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 	}
@@ -25,6 +28,33 @@ public partial class Planet : Node2D
 	{
 		angle += (float)delta * speed;
 		GlobalPosition = ((Godot.Node2D)GetParent()).GlobalPosition + new Vector2(Mathf.Cos(angle + offset) * Radius, Mathf.Sin(angle + offset) * Radius);
+		if (PlayerEntered)
+		{
+			// Calculate the player's position relative to the planet
+			Vector2 playerPosition = GlobalPosition + playerOffset.Rotated(angle);
+			player.GlobalPosition = playerPosition;
+			// add directional movment
+		}
 
+
+	}
+	public void PlayerEnter(Node body)
+	{
+		if (body is Character)
+		{
+			player = (CharacterBody2D)body;
+			PlayerEntered = true;
+			GD.Print("Player Entered");
+			playerOffset = player.GlobalPosition - GlobalPosition;
+		}
+
+	}
+	public void PlayerExit(Node body)
+	{
+		if (body is Character)
+		{
+			PlayerEntered = false;
+			GD.Print("Player Exited");
+		}
 	}
 }

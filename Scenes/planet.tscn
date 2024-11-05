@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2qv1r7u8cuht"]
+[gd_scene load_steps=7 format=3 uid="uid://b2qv1r7u8cuht"]
 
 [ext_resource type="Script" path="res://Scripts/Planet.cs" id="1_8uboy"]
 [ext_resource type="PackedScene" uid="uid://dydjwekn0kh1w" path="res://Scenes/line_2d.tscn" id="2_y2m7m"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://c2yr3pl886x0h" path="res://Scenes/Moon.tscn" id="4_58fev"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_68f1a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y4mw6"]
+radius = 30.0
 
 [node name="Planet" type="Node2D" node_paths=PackedStringArray("line", "mesh")]
 script = ExtResource("1_8uboy")
@@ -16,8 +19,18 @@ mesh = NodePath("MeshInstance2D")
 width = 20.0
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-scale = Vector2(20.5227, 19.5)
+position = Vector2(-3.94881e-07, 0)
+scale = Vector2(20.0227, 19.5)
 mesh = SubResource("SphereMesh_68f1a")
 
 [node name="MoonComponent" parent="." instance=ExtResource("3_6egwu")]
 moonScene = ExtResource("4_58fev")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_y4mw6")
+debug_color = Color(0.623529, 0.294118, 0.670588, 0.419608)
+
+[connection signal="body_entered" from="Area2D" to="." method="PlayerEnter"]
+[connection signal="body_exited" from="Area2D" to="." method="PlayerExit"]

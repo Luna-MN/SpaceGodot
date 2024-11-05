@@ -5,6 +5,8 @@ using System.Runtime.InteropServices;
 public partial class Character : CharacterBody2D
 {
 	public const float baseSpeed = 300.0f;
+	private const float MinZoom = 0.05f; // Minimum zoom level
+	private const float MaxZoom = 2.0f; // Maximum zoom level
 	private float Speed;
 	public Vector2 TargetPos;
 	public bool clicked = false;
@@ -98,11 +100,18 @@ public partial class Character : CharacterBody2D
 		Camera2D camera = GetNode<Camera2D>("Camera2D");
 		if (camera != null)
 		{
+			// Calculate the new zoom level
+			Vector2 newZoom = camera.Zoom * zoomFactor;
+
+			// Clamp the new zoom level to the defined limits
+			newZoom.X = Mathf.Clamp(newZoom.X, MinZoom, MaxZoom);
+			newZoom.Y = Mathf.Clamp(newZoom.Y, MinZoom, MaxZoom);
 			// Adjust the camera's zoom
-			camera.Zoom *= zoomFactor;
+			camera.Zoom = newZoom;
 
 			// Adjust the player's scale inversely to the camera's zoom
-			Scale /= zoomFactor;
+			Scale = new Vector2(1 / newZoom.X, 1 / newZoom.Y);
+
 			// Adjust the player's speed inversely to the zoom factor
 			Speed = baseSpeed * Scale.X;
 		}

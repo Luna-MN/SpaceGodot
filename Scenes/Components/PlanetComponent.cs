@@ -13,7 +13,6 @@ public partial class PlanetComponent : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-
 		for (int i = 0; i < RNG.RandiRange(3, 8); i++)
 		{
 			Planet planet = planetScene.Instantiate<Planet>();
@@ -35,15 +34,29 @@ public partial class PlanetComponent : Node2D
 			planet.line.DefaultColor = new Color(RNG.RandfRange(0, 1), RNG.RandfRange(0, 1), RNG.RandfRange(0, 1));
 
 			planets.Add(planet);
+			bool radiusPicked = false;
+
 			while (!radiusPicked)
 			{
+				planet.Radius = RNG.RandfRange(100, 1000);
+				bool validRadius = true;
+
 				foreach (Planet p in planets)
 				{
 					if ((planet.Radius < p.Radius && planet.Radius > p.Radius - 80) || (planet.Radius > p.Radius && planet.Radius < p.Radius + 80))
 					{
-						planet.Radius = RNG.RandfRange(100, 1000);
+						validRadius = false;
 						break;
 					}
+				}
+
+				if (planet.Radius > 400 && planet.Radius < 550)
+				{
+					validRadius = false;
+				}
+
+				if (validRadius)
+				{
 					radiusPicked = true;
 				}
 			}

@@ -25,5 +25,8 @@ mesh = SubResource("SphereMesh_oxqj0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_0ay53")
 
+[node name="Astoridbelt2" parent="." instance=ExtResource("3_byh7w")]
+overallRaduis = 400.0
+
 [connection signal="body_entered" from="Area2D" to="." method="PlayerEnteredArea"]
 [connection signal="body_exited" from="Area2D" to="." method="PlayerExitedArea"]

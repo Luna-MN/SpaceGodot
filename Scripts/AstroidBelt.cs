@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public partial class AstroidBelt : Node2D
 {
 	public RandomNumberGenerator RNG = new RandomNumberGenerator();
+	[Export]
 	public float overallRaduis = 1100;
 	[Export]
 	public PackedScene astroidScene;

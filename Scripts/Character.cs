@@ -14,6 +14,7 @@ public partial class Character : CharacterBody2D
 	public float angle = 0;
 	[Export]
 	public Camera2D camera;
+	public Vector2 offset;
 	public override void _Ready()
 	{
 		Speed = baseSpeed;
@@ -49,7 +50,7 @@ public partial class Character : CharacterBody2D
 			velocity.X = 0;
 		}
 
-		Velocity = velocity;
+		Velocity = velocity + offset;
 		MoveAndSlide();
 		if (sun != null)
 		{

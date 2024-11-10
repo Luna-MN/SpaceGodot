@@ -48,7 +48,6 @@ public partial class Planet : Node2D
 			PlayerEntered = true;
 			GD.Print("Player Entered");
 
-
 		}
 
 	}
@@ -58,7 +57,6 @@ public partial class Planet : Node2D
 		{
 			PlayerEntered = false;
 			GD.Print("Player Exited");
-
 
 		}
 	}

@@ -49,8 +49,8 @@ public partial class Character : CharacterBody2D
 		{
 			velocity.X = 0;
 		}
+		Velocity = velocity;
 
-		Velocity = velocity + offset;
 		MoveAndSlide();
 		if (sun != null)
 		{
